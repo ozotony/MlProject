@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+
+
+
+<form  action="{{ url_for('SubmitApp') }}" method="post"  enctype = "multipart/form-data" >
+
+  <div class="form-group">
+    <label for="pwd">Upload Image:</label>
+    <input type="file" class="form-control"  name="file" placeholder="Upload" id="pwd">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% if vfilename %}
+{% if vname %}
+	<div>
+        <h1>{{vname}}</h1>
+
+        <img src="{{ vfilename }}" alt="User Image">
+	</div>
+{% else %}
+     <div>
+        <h1>'IMAGE NOT TOO BRIGHT,COULD NOT CLASSIFY</h1>
+
+        <img src="{{ vfilename }}" alt="User Image">
+         </div>
+
+{% endif %}
+{% endif %}
+
+
+
+{% endblock %}
